@@ -61,7 +61,7 @@ def getAmount(server):
 def readAmountFromFile():
     global Avalue,Bvalue
     try:
-        with open('accounts.txt', 'w') as f:
+        with open('accounts.txt', 'r') as f:
             serv = f.readline()
             if serv == "A":
                 Avalue = int(f.readline())

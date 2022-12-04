@@ -117,7 +117,7 @@ def commitAddFundsTransaction(amount, serv):
             Avalue += amount
         if server == "B":
             Bvalue += amount
-    output = commitChanges(server)
+    output = commitChanges(serv)
     return output
 
 

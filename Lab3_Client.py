@@ -20,5 +20,5 @@ proxy = RPCProxy(c)
 #request an integer for basic Paxos then send RPC
 firstscenario = input("Press enter to start Scenario 1.")
 proxy.initializeValues(200,300)
-print(proxy.scenario1())
+#print(proxy.scenario1())
 proxy.closeServers()

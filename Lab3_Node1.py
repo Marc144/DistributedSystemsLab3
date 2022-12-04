@@ -86,9 +86,9 @@ def scenario1():
     servers = [serverA, serverB]
     scenario1description = "Scenario 1: Transaction 1 occurs before Transaction 2 "
     abortedResponse = scenario1description + "Failed."
-    if transaction1(proxies,servers) == False:
+    if transaction1(proxies) == False:
         return abortedResponse
-    if transaction2(proxies,servers) == False:
+    if transaction2(proxies) == False:
         return abortedResponse
     successMessage = scenario1description + "Succeeded."
     return successMessage
@@ -104,9 +104,9 @@ def scenario2():
     servers = [serverA, serverB]
     scenario1description = "Scenario 2: Transaction 2 occurs before Transaction 1 "
     abortedResponse = scenario1description + "Failed."
-    if transaction2(proxies,servers) == False:
+    if transaction2(proxies) == False:
         return abortedResponse
-    if transaction1(proxies,servers) == False:
+    if transaction1(proxies) == False:
         return abortedResponse
     successMessage = scenario1description + "Succeeded."
     return successMessage
@@ -123,9 +123,9 @@ def scenario1C(crash):
     servers = [serverA, serverB]
     scenario1description = "Scenario 1: Transaction 1 occurs before Transaction 2 "
     abortedResponse = scenario1description + "Failed."
-    if transaction1C(proxies,servers, crash) == False:
+    if transaction1C(proxies, crash) == False:
         return abortedResponse
-    if transaction2C(proxies,servers, crash) == False:
+    if transaction2C(proxies, crash) == False:
         return abortedResponse
     successMessage = scenario1description + "Succeeded."
     return successMessage
@@ -141,9 +141,9 @@ def scenario2C(crash):
     servers = [serverA, serverB]
     scenario1description = "Scenario 2: Transaction 2 occurs before Transaction 1 "
     abortedResponse = scenario1description + "Failed."
-    if transaction2C(proxies,servers, crash) == False:
+    if transaction2C(proxies, crash) == False:
         return abortedResponse
-    if transaction1C(proxies,servers, crash) == False:
+    if transaction1C(proxies, crash) == False:
         return abortedResponse
     successMessage = scenario1description + "Succeeded."
     return successMessage

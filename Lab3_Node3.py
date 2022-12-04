@@ -63,9 +63,11 @@ def readAmountFromFile():
     try:
         with open('accounts.txt', 'r') as f:
             serv = f.readline()
+            print(serv)
             if serv == "A":
                 Avalue = int(f.readline())
             serv = f.readline()
+            print(serv)
             if serv == "B":
                 Avalue = int(f.readline())
             f.close()

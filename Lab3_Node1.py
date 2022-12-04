@@ -380,9 +380,5 @@ handler.register_function(closeServers)
 
 # Run the server
 print("Server "+ server +" started")
-try:
-    with open('accounts.txt' , 'w') as f:
-        f.close()
-except FileNotFoundError:
-    print("no such directory")
+
 rpc_server(handler, ('localhost', 17000), authkey=b'peekaboo')

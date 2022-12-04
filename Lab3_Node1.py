@@ -198,7 +198,7 @@ def transaction2(proxies):
     global server, serverA, serverB
     responses = []
     accountABalance = fundAmountRequest(proxies[0], serverA)
-    valueToAdd = accountABalance * .2
+    valueToAdd = int(accountABalance * .2)
     #add to A
     for i in range(len(proxies)):
         responses.append(fundDepositRequest(proxies[i], valueToAdd, serverA))

@@ -64,10 +64,10 @@ def readAmountFromFile():
         with open('accounts.txt', 'r') as f:
             serv = f.readline()
             print(serv)
-            Avalue = int(f.readline())
+            Avalue = int(f.readline().strip())
             serv = f.readline()
             print(serv)
-            Bvalue = int(f.readline())
+            Bvalue = int(f.readline().strip())
             f.close()
     except FileNotFoundError:
         print("no such directory")

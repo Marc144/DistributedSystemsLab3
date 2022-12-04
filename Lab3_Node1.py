@@ -74,6 +74,7 @@ def initializeValues(a, b):
             f.close()
     except FileNotFoundError:
         print("no such directory")
+    print("Initialized Values A: " + str(a) + " B: "+str(b))
 
 #regular scenario 1
 def scenario1():
@@ -87,8 +88,10 @@ def scenario1():
     scenario1description = "Scenario 1: Transaction 1 occurs before Transaction 2 "
     abortedResponse = scenario1description + "Failed."
     if transaction1(proxies) == False:
+        print("Transaction 1")
         return abortedResponse
     if transaction2(proxies) == False:
+        print("Transaction 2")
         return abortedResponse
     successMessage = scenario1description + "Succeeded."
     return successMessage

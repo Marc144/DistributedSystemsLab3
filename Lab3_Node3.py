@@ -71,6 +71,8 @@ def readAmountFromFile():
             f.close()
     except FileNotFoundError:
         print("no such directory")
+    print(Avalue)
+    print(Bvalue)
 
 
 def commitChanges(serv):

@@ -288,7 +288,7 @@ def transaction2C(proxies, crash):
     global server, serverA, serverB
     responses = []
     accountABalance = fundAmountRequestwithCrash(proxies[0], serverA, crash)
-    valueToAdd = accountABalance * .2
+    valueToAdd = int(accountABalance * .2)
     #add to A
     for i in range(len(proxies)):
         responses.append(fundDepositRequestwithCrash(proxies[i], valueToAdd, serverA, crash))

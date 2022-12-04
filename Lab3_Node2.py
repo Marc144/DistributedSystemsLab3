@@ -1,6 +1,7 @@
 import pickle
 from multiprocessing.connection import Listener, Client
 from threading import Thread
+import time
 max_id = 0
 server = "A"
 Avalue = 0
@@ -120,8 +121,46 @@ def commitAddFundsTransaction(amount, serv):
     output = commitChanges(serv)
     return output
 
-def closeServer():
-    exit()
+def getAmountwithCrash(server, crash):
+    readAmountFromFile()
+    if server == "A":
+        return Avalue
+    if server == "B":
+        return Bvalue
+    return 0
+
+def requestDepositwithCrash(amount, serv, crash):
+    readAmountFromFile()
+    return True
+
+def requestFundswithCrash(amount, serv, crash):
+    readAmountFromFile()
+    global Avalue, Bvalue
+    requested_value = 0
+    if serv == "A":
+        requested_value = Avalue
+    if serv == "B":
+        requested_value = Bvalue
+    if requested_value > amount:
+        if crash:
+            time.sleep(10)
+        return True
+    if crash:
+        time.sleep(10)
+    return False
+
+def commitAddFundsTransactionwithCrash(amount, serv, crash):
+    global server, Avalue, Bvalue
+    if serv == server:
+        if server == "A":
+            Avalue += amount
+        if server == "B":
+            Bvalue += amount
+    output = commitChanges(serv)
+    return output
+
+def simulateCrash():
+    time.sleep(10)
 
 # Register with a handler
 handler = RPCHandler()
@@ -129,7 +168,11 @@ handler.register_function(getAmount)
 handler.register_function(commitAddFundsTransaction)
 handler.register_function(requestFunds)
 handler.register_function(requestDeposit)
-handler.register_function(closeServer)
+handler.register_function(getAmountwithCrash)
+handler.register_function(commitAddFundsTransactionwithCrash)
+handler.register_function(requestFundswithCrash)
+handler.register_function(requestDepositwithCrash)
+handler.register_function(simulateCrash)
 
 # Run the server
 print("Server "+ server +" started")

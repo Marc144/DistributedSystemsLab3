@@ -246,6 +246,8 @@ def transaction1C(proxies, crash):
     responses = []
     for i in range(len(proxies)):
         responses.append(sendFundRequestwithCrash(proxies[i], 100, serverA, crash))
+        if i == 0 and not crash:
+            proxies[i].simulateCrash()
     status = True
     for i in responses:
         if i == False:
